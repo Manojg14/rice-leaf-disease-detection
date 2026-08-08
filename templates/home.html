@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Rice Leaf Disease Detection</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h1>
+                🌾 Rice Leaf Disease Detection
+            </h1>
+
+            <p class="description">
+
+                Upload a rice leaf image to detect
+                the disease using a MobileNetV2
+                deep learning model.
+
+            </p>
+
+
+            <!-- Flash messages -->
+
+            {% with messages = get_flashed_messages() %}
+
+                {% if messages %}
+
+                    {% for message in messages %}
+
+                        <div class="alert">
+
+                            {{ message }}
+
+                        </div>
+
+                    {% endfor %}
+
+                {% endif %}
+
+            {% endwith %}
+
+
+            <!-- Upload form -->
+
+            <form action="{{ url_for('predict') }}"
+                  method="POST"
+                  enctype="multipart/form-data">
+
+
+                <div class="upload-box">
+
+                    <label for="file">
+
+                        Select Rice Leaf Image
+
+                    </label>
+
+                    <input
+                        type="file"
+                        id="file"
+                        name="file"
+                        accept="image/*"
+                        required
+                    >
+
+                </div>
+
+
+                <button type="submit">
+
+                    🔍 Predict Disease
+
+                </button>
+
+            </form>
+
+
+            <div class="classes">
+
+                <h3>Supported Diseases</h3>
+
+                <ul>
+
+                    <li>
+                        Bacterial Leaf Blight
+                    </li>
+
+                    <li>
+                        Brown Spot
+                    </li>
+
+                    <li>
+                        Leaf Smut
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

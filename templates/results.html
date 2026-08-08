@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Prediction Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <div class="card result-card">
+
+            <h1>
+                🌾 Prediction Result
+            </h1>
+
+
+            <!-- Uploaded image -->
+
+            <div class="image-container">
+
+                <img
+                    src="{{ url_for(
+                        'static',
+                        filename='uploads/' + image_path
+                    ) }}"
+                    alt="Uploaded Rice Leaf"
+                >
+
+            </div>
+
+
+            <!-- Prediction -->
+
+            <div class="result">
+
+                <h2>
+                    Detected Disease
+                </h2>
+
+                <h1 class="prediction">
+
+                    {{ prediction }}
+
+                </h1>
+
+
+                <p>
+
+                    Confidence:
+
+                    <strong>
+                        {{ confidence }}%
+                    </strong>
+
+                </p>
+
+            </div>
+
+
+            <!-- Back button -->
+
+            <a
+                href="{{ url_for('home') }}"
+                class="button"
+            >
+
+                🔄 Try Another Image
+
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
